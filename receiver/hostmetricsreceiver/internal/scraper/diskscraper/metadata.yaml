@@ -15,6 +15,10 @@ attributes:
     type: string
     enum: [read, write]
 
+  serial_number:
+    description: The serial number of the disk.
+    type: string
+
 metrics:
   system.disk.io:
     enabled: true
@@ -24,7 +28,7 @@ metrics:
       value_type: int
       aggregation_temporality: cumulative
       monotonic: true
-    attributes: [device, direction]
+    attributes: [device, direction, serial_number]
   system.disk.operations:
     enabled: true
     description: Disk operations count.
@@ -33,7 +37,7 @@ metrics:
       value_type: int
       aggregation_temporality: cumulative
       monotonic: true
-    attributes: [device, direction]
+    attributes: [device, direction, serial_number]
 
   system.disk.io_time:
     enabled: true
@@ -43,7 +47,7 @@ metrics:
       value_type: double
       aggregation_temporality: cumulative
       monotonic: true
-    attributes: [device]
+    attributes: [device, serial_number]
   system.disk.operation_time:
     enabled: true
     description: Time spent in disk operations.
@@ -52,7 +56,7 @@ metrics:
       value_type: double
       aggregation_temporality: cumulative
       monotonic: true
-    attributes: [device, direction]
+    attributes: [device, direction, serial_number]
   system.disk.weighted_io_time:
     enabled: true
     description: Time disk spent activated multiplied by the queue length.
@@ -61,7 +65,7 @@ metrics:
       value_type: double
       aggregation_temporality: cumulative
       monotonic: true
-    attributes: [device]
+    attributes: [device, serial_number]
 
   system.disk.pending_operations:
     enabled: true
@@ -71,7 +75,7 @@ metrics:
       value_type: int
       aggregation_temporality: cumulative
       monotonic: false
-    attributes: [device]
+    attributes: [device, serial_number]
   system.disk.merged:
     enabled: true
     description: The number of disk reads/writes merged into single physical disk access operations.
@@ -80,4 +84,4 @@ metrics:
       value_type: int
       aggregation_temporality: cumulative
       monotonic: true
-    attributes: [device, direction]
+    attributes: [device, direction, serial_number]
